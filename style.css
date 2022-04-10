@@ -1,4 +1,8 @@
 body{
-	color: red;
-	background: black;
+	color: white;
+	background: darkblue;
+}
+
+a {
+	color: yellow;
 }
