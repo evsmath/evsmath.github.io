@@ -8,7 +8,7 @@
   <meta charset="utf-8">
 </head>
 <body>
-	<h1>A short text on generating functions</h1>
+	<h1>My motivation for Generating Functions</h1>
 	<p>I was recently motivated to write this small text by the recently uploaded <a href="https://www.youtube.com/watch?v=bOXCLR3Wric">video</a> by the legendary mathematics expositor Grant Sanderson (3Blue1Brown) on generating functions.
 	Previously, I presented a short seminar on the topic for the undegradute seminar group S4 at IME-USP, drawing inspiration both from the book "generatingfunctionology" by Herbert S. Wilf(mentioned in the above video)
 	and the book "21 Aulas de Matemática Olímpica", by Carlos Yuzo Shine. It's intent was to introduce generating functions as a natural tool to employ on problems mainly in combinatorics (hence the suggestive subtitle "Como Algebrizar a Combinatória"),
@@ -16,14 +16,93 @@
 	<p>It is perhaps not that remarkable of a coincidence to find that the video by Grant utilizes examples in a very similar vein to the ones I considered in my seminar, notably the one on the Fibbonaci Numbers being the same.
 	This is a testament to the beauty of the theory conceived, and while I would love to expand my perspective on the topic, it is somewhat unnecessary when a clearly better maths communicator, with much better tools at his disposal, has already done what I would
 	in a much more comprehensive manner. It is the reason why I, at the present moment, may refrain from rewriting my seminar on a post on this page, but I am still compelled to offer my vision on a specific point mentioned by Grant: the intution and motivation
-	behind considering generating functions in the first place. Naturally, this perspective will draw from many references, some of which I may not be able to cite out of memory, but nonetheless influenced me to a great degree.</p>
+	behind considering generating functions in the first place. Wilf gives several reasons as to why generating functions are incredibly useful and allow us to solve problems
+	we might not be able to otherwise, but as a fundamental starting point of the theory, I believe this text may be of value.
+	Naturally, this perspective will draw from many references, some of which I may not be able to cite out of memory, but nonetheless influenced me to a great degree.</p>
 	<p>
-	<p>To me, the primary idea behind considering generating functions in the first place is to properly express algebraically the additive and multiplicative principles in
+	<p>To me, the primary idea for considering generating functions in the first place is to properly express algebraically the additive and multiplicative principles in
 	combinatorics. The additive principle states that exclusive options and situations are to be considered separately, and hence added together, and the multiplicative 
 	principle states that simulteanous options and situations ought to be multiplied together. This is heuristically represented by the following. Consider that I have 3 shirts
-	I can wear on a given day, each labeled $A$, $B$ or $C$. My options for that day are therefore represented by the expression
+	I can wear on a given day, each labeled \(A\), \(B\) or \(C\). My options for that day are therefore represented by the expression
 	\[
 	A + B + C.
 	\]</p>
+	<p>Now suppose that I also have two options of pairs of shoes to wear, say \( X \) and \( Y \). For my outfit, I must consider both a shirt and a pair of shoes, so my new 
+	options are expressed through
+	\[
+	(A + B + C)(X + Y) = AX + BX + CX + AY + BY + CY.
+	\]
+	Though this seems incredibly redundant and obvious, the power of these kind of expressions in expressing combinatioral situations is better seen when one restricts the total
+	combinatorial information to only certain parts. For example, if I only cared how many options of outfits I had, not which options, I would "evaluate" \( A = B = C = X = Y = 1 \) and obtain
+	the total of \( 6 \).
+	</p>
+	<p>This next example may be more instructive, as it introduces options that are in a sense "equal". Consider \( 4 \) balls in a box, \( 2 \) red (\(R\)), \( 1 \) green (\(G\)) and \( 1 \) blue (\(B\)). 
+	How many options we have for taking balls out of the box? For only one ball, we have \( R \), \( G \) and \( B \). For two balls, we have \( RR \), \( RG \), \( RB \) and \( BG \). 
+	For three balls, we have \( RRG \), \( RRB \) and \( RGB \). And for four balls, we only have \( RRGB \). By introducing the formal expressions \( 1 + R + R^2 \), \( 1 + G \) and 
+	\( 1 + B \), where the number \( 1 \), as the multiplicative neutral element, is meant to represent the option of zero balls of the given color, we may consider the expression
+	\[
+	(1 + R + R^2)(1 + G)(1 + B) = 1 + R + G + B + R^2 + RG + RB + GB + R^2G + R^2B + RGB + R^2GB.
+	\]
+	</p>
+	<p>This expression represents the total space of possibilites when we are considering balls of which color we are taking out of the box. Again, we may evaluate \( R = G = B = 1 \)
+	and obtain 12 possible outcomes of taking \( n \) balls out of the box, for all \( n \in \{0,1,2,3,4\} \). However, we can extract more information by considering that all balls,
+	irrespective of their colors, share the property of "being a ball". We can add this layer of information by an auxiliary variable \( X \) that represents the quantity of balls,
+	as now balls of different colors contribute the same amount to this sum:
+	\[
+	(1 + RX + R^2X^2)(1 + GX)(1 + BX) = 1 + (R + G + B)X + (R^2 + RG + RB + GB)X^2 + (R^2G + R^2B + RGB)X^3 + R^2GB X^4.
+	\]
+	Now, even as we evaluate \( R = G = B = 1 \), we still have the filtered out information of how many possibilities of taking balls out the box we have in respect to the specific
+	number of balls we are taking out, as the coefficient of the term \( X^n \) in the above expression.</p>
+	<p>We apply this reasoning to acquire a new perspective on the following toy problem. How many solutions does the equation
+	\[
+	x_1 + x_2 + x_3 = 12, \quad x_1 \in \{ 2, 3, 4 \}, \quad x_2 \in \{ 2,3,4,5 \}, \quad x_3 \in \{5,6\}
+	\]
+	have? For each variable \( x_i \), we associate a formal expression
+	\[
+	P_1(X) = X^2 + X^3 + X^4, \quad P_2(X) = X^2 + X^3 + X^4 + X^5, \quad P_3(X) = X^5 + X^6
+	\]
+	that is meant to combinatorially represent the possible choices of values for each variable, with respect exclusively to their "sum". This is in the sense that this "unit of
+	measurement" is shared among all variable to be added, as we do not distinguish them meaningfully. This is represented as the number in the
+	exponent of the common variable \( X \), and multiplying the expressions, that is, considering the three choices simultaneously in the polynomial \( P(X) = P_1(X)P_2(X)P_3(X) \), 
+	would naturally result in a sum of the exponents. It is therefore expected that the answer to our problem is \( [X^{12}]P(X) \), the coefficient of the term \( X^{12} \) in the
+	polynomial \( P(X) \). One can also justify this train of tought by simply observing that each \( + 1 \) in the coefficient of \( X^{12} \) corresponds uniquely to a choice of
+	distributive multiplication of the monomials in the polynomials \( P_i(X) \) that results in \( X^{12} \), that is, a particular solution of the problem.</p>
+	<p>This reduces a combinatorial problem to a simple computational problem. One can rightfully argue, however, that this is by no means a simplification, and only a very
+	roundabout way of arriving at the same computation one would intuitively perform in the first place. The true magic of generating functions, however, appears when more abstract
+	conditions appear. What if, instead of requiring that \( x_1 \in \{ 2,3,4 \} \), we only required that \( x_1 \) be even? We could consider the formal expression
+	\[
+	P_1(X) = 1 + X^2 + X^4 + X^6 + X^8 + \cdots
+	\]
+	that no longer is a polynomial. With respect to the specific problem of \( x_1 + x_2 + x_3 = k = 12 \), you could still put forth the argument that we could cut off this formal
+	expression at the monomial \( X^{12} \), as higher terms would certainly not contribute to solutions, but now we wish to find a general solution for any \( k \in \mathbb{N} \).
+	And, despite the formal expression now no longer being a polynomial, it still obeys, as a formal series, the additive, multiplicative and distributive properties that polynomials
+	have. And by considering the generating functions of these formal series, such as
+	\[
+	\dfrac{1}{1 - X^2} = 1 + X^2 + X^4 + \cdots,
+	\]
+	we could correctly evaluate obtain a solution to the general problem posed, as done in the Wilf's book on many different other problems.
+	</p>
+	<p>As a last example of more abstract nature, consider the following problem posed at the 1995 IMO. Let \( p \) be an odd prime. Determine the number of subsets of \( p \) elements
+	of \( S = \{1,2,\ldots, 2p\} \) whose sum of its elements is divisible by \( p \). Now, don't be mistaken, this is a hard problem, and one may need a bright idea (such as that of
+	generating functions) in order to solve it. We tackle it in parts: how many subsets of \( S \) there are? How many of them have \( p \) elements? Naturally, every maths student knows
+	answer to these questions: \( 2^{2p} \) and \( \binom{2p}{p} \), respectively. But let's try to deduce these results in view of generating functions. Each subset of \( S \) corresponds to
+	a combination of \( 2p \) choices; whether to include the element \( i \) or not, for all \( i \in S \). Each of these choices is encoded by the expression \( 1 + X \), where the number \( 1 \),
+	as before, corresponds to not choosing to include the element in the subset, and the variable \( X \) is meant to represent collectively the quantity of elements of the subset. Naturally,
+	\[
+	\prod_{i=1}^{2p} (1+X) = (1+X)^{2p} = \sum_{i=0}^{2p} \binom{2p}{i}X^{i} = 1 + 2pX + \ldots + \binom{2p}{p}X^p + \ldots + X^{2p}.
+	\]
+	By evaluating \( X = 1 \), we obtain the total number of subsets as \( (1+1)^{2p} \). We can now concern ourselves with the information of the sum the elements of the given subsets;
+	encoding this information through an additional variable \( Y \) that represents not the "unit" of element that is added to the subset, but it's "value", we consider the polynomial
+	\[
+	\prod_{i=1}^{2p} (1 + XY^i) = \sum_{i=0}^{2p} \left( \sum c_{ij} Y^j \right) X^i
+	\]
+	where \( c_{ij} \) is the number of subsets of \( i \) elements whose sum is \( j \). This is the starting point to the problem, and to consider further the information of divisibility
+	by \( p \), one must introduce a certain "filtration" on the coefficients as done in the video by Grant, utilizing complex numbers.	
+	</p>
+	<p>I hope that this short text may give some light as to why one would think of generating functions in the first place, and how this abstract tought can be applied to more concrete problems.
+	Note that all of our combinatoral problems are not specifically concerned with a notion of "order" in which certain choices are made, as these types of problems require the more apt notion of
+	exponential generating functions. I must also mention that generating functions and their variants appear in many more advanced and modern areas of mathematical inquiry, a particular example
+	being that they are used to compute the number of points on a given elliptic curve over a finite field.</p>
+	<p> Click <a href="./personal.html">here</a> to go back. </p>
 </body>
 </html>
