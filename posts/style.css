@@ -1,8 +1,9 @@
 body{
 	color: black;
-	background: grey;
+	background: DarkSeaGreen;
+	font-family: Arial, Helvetica, sans-serif;
 }
 
 a {
-	color: yellow;
+	color: DarkSlateBlue;
 }
