@@ -73,33 +73,33 @@
 	\[
 	P_1(X) = 1 + X^2 + X^4 + X^6 + X^8 + \cdots
 	\]
-	that no longer is a polynomial. With respect to the specific problem of \( x_1 + x_2 + x_3 = k = 12 \), you could still put forth the argument that we could cut off this formal
-	expression at the monomial \( X^{12} \), as higher terms would certainly not contribute to solutions, but now we wish to find a general solution for any \( k \in \mathbb{N} \).
+	that is no longer a polynomial. With respect to the specific problem of \( x_1 + x_2 + x_3 = k = 12 \), you could still put forth the argument that we could cut off this formal
+	expression at the monomial \( X^{12} \), as higher terms of \( P_1(X) \) would certainly not contribute to solutions, but now we wish to find a general solution for any \( k \in \mathbb{N} \).
 	And, despite the formal expression now no longer being a polynomial, it still obeys, as a formal series, the additive, multiplicative and distributive properties that polynomials
 	have. And by considering the generating functions of these formal series, such as
 	\[
 	\dfrac{1}{1 - X^2} = 1 + X^2 + X^4 + \cdots,
 	\]
-	we could correctly evaluate obtain a solution to the general problem posed, as done in the Wilf's book on many different other problems.
+	we could correctly obtain a solution to the general problem posed, as done in Wilf's book in many different problems.
 	</p>
 	<p>As a last example of more abstract nature, consider the following problem posed at the 1995 IMO. Let \( p \) be an odd prime. Determine the number of subsets of \( p \) elements
 	of \( S = \{1,2,\ldots, 2p\} \) whose sum of its elements is divisible by \( p \). Now, don't be mistaken, this is a hard problem, and one may need a bright idea (such as that of
-	generating functions) in order to solve it. We tackle it in parts: how many subsets of \( S \) there are? How many of them have \( p \) elements? Naturally, every maths student knows
-	answer to these questions: \( 2^{2p} \) and \( \binom{2p}{p} \), respectively. But let's try to deduce these results in view of generating functions. Each subset of \( S \) corresponds to
-	a combination of \( 2p \) choices; whether to include the element \( i \) or not, for all \( i \in S \). Each of these choices is encoded by the expression \( 1 + X \), where the number \( 1 \),
-	as before, corresponds to not choosing to include the element in the subset, and the variable \( X \) is meant to represent collectively the quantity of elements of the subset. Naturally,
+	generating functions) in order to solve it. We tackle it in parts: how many subsets of \( S \) are there? How many of them have \( p \) elements? The answer to these first two questions is 
+	comparatively easier, being \( 2^{2p} \) and \( \binom{2p}{p} \), respectively. But let's try to deduce these results in view of generating functions. Each subset of \( S \) corresponds to
+	a combination of \( 2p \) independent choices; whether to include the element \( i \) or not, for all \( i \in S \). Each of these choices is encoded by the expression \( 1 + X \), where the number \( 1 \),
+	as before, corresponds to not choosing to include the element in the subset, and the variable \( X \) is meant to collectively represent the quantity of elements of the subset. Naturally,
 	\[
 	\prod_{i=1}^{2p} (1+X) = (1+X)^{2p} = \sum_{i=0}^{2p} \binom{2p}{i}X^{i} = 1 + 2pX + \ldots + \binom{2p}{p}X^p + \ldots + X^{2p}.
 	\]
-	By evaluating \( X = 1 \), we obtain the total number of subsets as \( (1+1)^{2p} \). We can now concern ourselves with the information of the sum the elements of the given subsets;
+	By evaluating \( X = 1 \), we obtain the total number of subsets as \( (1+1)^{2p} \). We can now concern ourselves with the information of the sum of the elements of the given subsets;
 	encoding this information through an additional variable \( Y \) that represents not the "unit" of element that is added to the subset, but it's "value", we consider the polynomial
 	\[
 	\prod_{i=1}^{2p} (1 + XY^i) = \sum_{i=0}^{2p} \left( \sum c_{ij} Y^j \right) X^i
 	\]
-	where \( c_{ij} \) is the number of subsets of \( i \) elements whose sum is \( j \). This is the starting point to the problem, and to consider further the information of divisibility
-	by \( p \), one must introduce a certain "filtration" on the coefficients as done in the video by Grant, utilizing complex numbers.	
+	where \( c_{ij} \) is the number of subsets of \( i \) elements whose sum is \( j \). This is the starting point to the problem, and to also take into account divisibility of the coefficients
+	by \( p \), one must introduce a certain "filtration" by complex roots of unity as done in Grant's video.	
 	</p>
-	<p>I hope that this short text may give some light as to why one would think of generating functions in the first place, and how this abstract tought can be applied to more concrete problems.
+	<p>I hope that this short text may give some light as to why one would think of generating functions in the first place, and how this abstract line of reasoning can be applied to more concrete problems.
 	Note that all of our combinatoral problems are not specifically concerned with a notion of "order" in which certain choices are made, as these types of problems require the more apt notion of
 	exponential generating functions. I must also mention that generating functions and their variants appear in many more advanced and modern areas of mathematical inquiry, a particular example
 	being that they are used to compute the number of points on a given elliptic curve over a finite field.</p>
