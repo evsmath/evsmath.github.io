@@ -9,8 +9,8 @@
 </head>
 <body>
 	<h1>My motivation for Generating Functions</h1>
-	<p>I was recently motivated to write this small text by the recently uploaded <a href="https://www.youtube.com/watch?v=bOXCLR3Wric">video</a> by the legendary mathematics expositor Grant Sanderson (3Blue1Brown) on generating functions.
-	Previously, I presented a short seminar on the topic for the undegradute seminar group S4 at IME-USP, drawing inspiration both from the book "generatingfunctionology" by Herbert S. Wilf(mentioned in the above video)
+	<p>I was recently motivated to write this small text by the recently uploaded <a href="https://www.youtube.com/watch?v=bOXCLR3Wric">video</a> by legendary mathematics communicator Grant Sanderson (3Blue1Brown) on generating functions.
+	Previously, I presented a short seminar on the topic for the undegradute seminar group S4 at IME-USP, drawing inspiration both from the book "generatingfunctionology" by Herbert S. Wilf (mentioned in the above video)
 	and the book "21 Aulas de Matemática Olímpica", by Carlos Yuzo Shine. It's intent was to introduce generating functions as a natural tool to employ on problems mainly in combinatorics (hence the suggestive subtitle "Como Algebrizar a Combinatória"),
 	drawing from some examples I found especially interesting.</p>
 	<p>It is perhaps not that remarkable of a coincidence to find that the video by Grant utilizes examples in a very similar vein to the ones I considered in my seminar, notably the one on the Fibbonaci Numbers being the same.
@@ -23,12 +23,12 @@
 	<p>To me, the primary idea for considering generating functions in the first place is to properly express algebraically the additive and multiplicative principles in
 	combinatorics. The additive principle states that exclusive options and situations are to be considered separately, and hence added together, and the multiplicative 
 	principle states that simulteanous options and situations ought to be multiplied together. This is heuristically represented by the following. Consider that I have 3 shirts
-	I can wear on a given day, each labeled \(A\), \(B\) or \(C\). My options for that day are therefore represented by the expression
+	that I can wear on a given day, each labeled \(A\), \(B\) or \(C\). My options for that day are therefore represented by the formal expression
 	\[
 	A + B + C.
 	\]</p>
 	<p>Now suppose that I also have two options of pairs of shoes to wear, say \( X \) and \( Y \). For my outfit, I must consider both a shirt and a pair of shoes, so my new 
-	options are expressed through
+	options are expressed by
 	\[
 	(A + B + C)(X + Y) = AX + BX + CX + AY + BY + CY.
 	\]
@@ -37,7 +37,7 @@
 	the total of \( 6 \).
 	</p>
 	<p>This next example may be more instructive, as it introduces options that are in a sense "equal". Consider \( 4 \) balls in a box, \( 2 \) red (\(R\)), \( 1 \) green (\(G\)) and \( 1 \) blue (\(B\)). 
-	How many options we have for taking balls out of the box? For only one ball, we have \( R \), \( G \) and \( B \). For two balls, we have \( RR \), \( RG \), \( RB \) and \( BG \). 
+	How many options do we have for taking balls out of the box? For only one ball, we have \( R \), \( G \) and \( B \). For two balls, we have \( RR \), \( RG \), \( RB \) and \( BG \). 
 	For three balls, we have \( RRG \), \( RRB \) and \( RGB \). And for four balls, we only have \( RRGB \). By introducing the formal expressions \( 1 + R + R^2 \), \( 1 + G \) and 
 	\( 1 + B \), where the number \( 1 \), as the multiplicative neutral element, is meant to represent the option of zero balls of the given color, we may consider the expression
 	\[
@@ -51,9 +51,9 @@
 	\[
 	(1 + RX + R^2X^2)(1 + GX)(1 + BX) = 1 + (R + G + B)X + (R^2 + RG + RB + GB)X^2 + (R^2G + R^2B + RGB)X^3 + R^2GB X^4.
 	\]
-	Now, even as we evaluate \( R = G = B = 1 \), we still have the filtered out information of how many possibilities of taking balls out the box we have in respect to the specific
-	number of balls we are taking out, as the coefficient of the term \( X^n \) in the above expression.</p>
-	<p>We apply this reasoning to acquire a new perspective on the following toy problem. How many solutions does the equation
+	Now, even as we evaluate \( R = G = B = 1 \), we still have the information of how many ways we have of taking balls out the box, in respect to the
+	number of balls we are taking. This is the coefficient of the term \( X^n \) in the above expression.</p>
+	<p>We apply this reasoning to get a new perspective on the following toy problem. How many solutions does the equation
 	\[
 	x_1 + x_2 + x_3 = 12, \quad x_1 \in \{ 2, 3, 4 \}, \quad x_2 \in \{ 2,3,4,5 \}, \quad x_3 \in \{5,6\}
 	\]
